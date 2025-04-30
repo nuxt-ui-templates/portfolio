@@ -44,7 +44,9 @@ export default defineContentConfig({
       type: 'page',
       source: 'index.yml',
       schema: z.object({
-        hero: createPageHeroSchema(),
+        hero: createPageHeroSchema().extend({
+          images: z.array(createImageSchema())
+        }),
         about: createBaseSchema(),
         experience: createBaseSchema().extend({
           items: z.array(z.object({
