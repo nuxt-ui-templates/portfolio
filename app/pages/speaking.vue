@@ -1,7 +1,7 @@
 <script setup lang="ts">
 type Event = {
   title: string
-  date: string
+  date: Date
   location: string
   url?: string
   category: 'Conference' | 'Live talk' | 'Podcast'
@@ -27,22 +27,20 @@ useSeoMeta({
 
 const { global } = useAppConfig()
 
-const groupedEvents = computed(() => {
-  if (!page.value?.events) return {} as Record<Event['category'], Event[]>
-  return page.value.events.reduce((acc, event: Event) => {
-    const category = event.category
-    if (!acc[category]) {
-      acc[category] = []
-    }
-    acc[category].push(event)
-    return acc
-  }, {} as Record<Event['category'], Event[]>)
+const groupedEvents = computed((): Record<Event['category'], Event[]> => {
+  const events = page.value?.events || []
+  const grouped: Record<Event['category'], Event[]> = {
+    'Conference': [],
+    'Live talk': [],
+    'Podcast': []
+  }
+  for (const event of events) {
+    if (grouped[event.category]) grouped[event.category].push(event)
+  }
+  return grouped
 })
 
-function formatDate(dateString: string): string {
-  if (!dateString || isNaN(new Date(dateString).getTime())) {
-    return dateString
-  }
+function formatDate(dateString: Date): string {
   return new Date(dateString).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })
 }
 </script>
