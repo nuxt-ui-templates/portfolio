@@ -63,9 +63,32 @@ export default defineNuxtSchema({
       description: 'UI Customization.',
       icon: 'i-mdi-palette-outline',
       fields: {
+        colors: group({
+          title: 'Colors',
+          description: 'Manage main colors of your application',
+          icon: 'i-mdi-palette-outline',
+          fields: {
+            primary: field({
+              type: 'string',
+              title: 'Primary',
+              description: 'Primary color of your UI.',
+              icon: 'i-mdi-palette-outline',
+              default: 'green',
+              required: ['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose']
+            }),
+            neutral: field({
+              type: 'string',
+              title: 'Neutral',
+              description: 'Neutral color of your UI.',
+              icon: 'i-mdi-palette-outline',
+              default: 'slate',
+              required: ['slate', 'gray', 'zinc', 'neutral', 'stone']
+            })
+          }
+        }),
         icons: group({
           title: 'Icons',
-          description: 'Manage icons used in UI Pro.',
+          description: 'Manage icons used in the application.',
           icon: 'i-mdi-application-settings-outline',
           fields: {
             search: field({
@@ -111,22 +134,6 @@ export default defineNuxtSchema({
               default: 'i-lucide-hash'
             })
           }
-        }),
-        primary: field({
-          type: 'string',
-          title: 'Primary',
-          description: 'Primary color of your UI.',
-          icon: 'i-mdi-palette-outline',
-          default: 'green',
-          required: ['red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose']
-        }),
-        neutral: field({
-          type: 'string',
-          title: 'Neutral',
-          description: 'Neutral color of your UI.',
-          icon: 'i-mdi-palette-outline',
-          default: 'slate',
-          required: ['slate', 'cool', 'zinc', 'neutral', 'stone']
         })
       }
     }),

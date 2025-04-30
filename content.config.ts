@@ -1,115 +1,66 @@
 import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
-const PageSchema = z.object({
-  seo: z.object({
-    title: z.string(),
-    description: z.string()
-  })
-})
-
-const BaseSection = z.object({
+const createBaseSchema = () => z.object({
   title: z.string(),
   description: z.string()
 })
 
-const Link = z.object({
-  label: z.string(),
-  to: z.string(),
-  icon: z.string().optional()
-})
-
-const Button = z.object({
+const createButtonSchema = () => z.object({
   label: z.string(),
   icon: z.string().optional(),
-  trailingIcon: z.string().optional(),
   to: z.string().optional(),
   color: z.enum(['primary', 'neutral', 'success', 'warning', 'error', 'info']).optional(),
   size: z.enum(['xs', 'sm', 'md', 'lg', 'xl']).optional(),
   variant: z.enum(['solid', 'outline', 'subtle', 'soft', 'ghost', 'link']).optional(),
-  id: z.string().optional(),
   target: z.enum(['_blank', '_self']).optional()
 })
 
-const Image = z.object({
-  src: z.string(),
+const createImageSchema = () => z.object({
+  src: z.string().editor({ input: 'media' }),
   alt: z.string(),
-  width: z.number().optional(),
-  height: z.number().optional()
 })
 
-const DualModeImage = z.object({
-  light: z.string().editor({ input: 'media' }),
-  dark: z.string().editor({ input: 'media' }),
-  width: z.number().optional(),
-  height: z.number().optional(),
-  alt: z.string().optional()
-})
-
-const Author = z.object({
+const createAuthorSchema = () => z.object({
   name: z.string(),
   description: z.string().optional(),
   username: z.string().optional(),
   twitter: z.string().optional(),
   to: z.string().optional(),
-  avatar: Image.optional()
+  avatar: createImageSchema().optional()
 })
 
-const Testimonial = z.object({
+const createTestimonialSchema = () => z.object({
   quote: z.string(),
-  author: Author
+  author: createAuthorSchema()
 })
 
-const PageSection = BaseSection.extend({
-  links: z.array(Button),
-  image: DualModeImage,
-  cta: z.object({
-    title: z.string(),
-    label: z.string(),
-    to: z.string(),
-    icon: z.string()
-  }).optional()
-})
-
-const PageHero = BaseSection.extend({
-  image: DualModeImage.optional(),
-  head: z.object({
-    title: z.string().optional(),
-    description: z.string().optional()
-  }).optional(),
-  headline: z.object({
-    label: z.string(),
-    to: z.string(),
-    icon: z.string().optional().editor({ input: 'icon' })
-  }).optional(),
-  links: z.array(Button).optional(),
-  cta: Link.optional()
+const createPageHeroSchema = () => createBaseSchema().extend({
+  links: z.array(createButtonSchema()).optional(),
 })
 
 export default defineContentConfig({
   collections: {
     index: defineCollection({
-      type: 'data',
+      type: 'page',
       source: 'index.yml',
-      schema: PageSchema.extend({
-        hero: PageHero.extend({
-          images: z.array(Image)
-        }),
-        about: PageSection,
-        experience: PageSection.extend({
+      schema: z.object({
+        hero: createPageHeroSchema(),
+        about: createBaseSchema(),
+        experience: createBaseSchema().extend({
           items: z.array(z.object({
-            date: z.string(),
+            date: z.date(),
             position: z.string(),
             company: z.object({
               name: z.string(),
               url: z.string(),
-              logo: z.string(),
+              logo: z.string().editor({ input: 'icon' }),
               color: z.string()
             })
           }))
         }),
-        testimonials: z.array(Testimonial),
-        blog: PageSection,
-        faq: PageSection.extend({
+        testimonials: z.array(createTestimonialSchema()),
+        blog: createBaseSchema(),
+        faq: createBaseSchema().extend({
           categories: z.array(
             z.object({
               title: z.string().nonempty(),
@@ -129,22 +80,20 @@ export default defineContentConfig({
       schema: z.object({
         title: z.string().nonempty(),
         description: z.string().nonempty(),
-        image: z.string().nonempty(),
+        image: z.string().nonempty().editor({ input: 'media' }),
         url: z.string().nonempty(),
         tags: z.array(z.string()),
-        date: z.string().nonempty()
+        date: z.date()
       })
     }),
     blog: defineCollection({
       type: 'page',
       source: 'blog/*.md',
       schema: z.object({
-        title: z.string().nonempty(),
-        description: z.string().nonempty(),
         minRead: z.number(),
-        date: z.string().nonempty(),
-        image: z.string().nonempty(),
-        author: Author
+        date: z.date(),
+        image: z.string().nonempty().editor({ input: 'media' }),
+        author: createAuthorSchema()
       })
     }),
     pages: defineCollection({
@@ -153,29 +102,29 @@ export default defineContentConfig({
         { include: 'projects.yml' },
         { include: 'blog.yml' }
       ],
-      schema: PageHero
+      schema: createPageHeroSchema()
     }),
     speaking: defineCollection({
-      type: 'data',
+      type: 'page',
       source: 'speaking.yml',
-      schema: PageSchema.extend({
-        hero: PageHero,
+      schema: z.object({
+        hero: createPageHeroSchema(),
         events: z.array(z.object({
           category: z.enum(['Live talk', 'Podcast', 'Conference']),
           title: z.string(),
-          date: z.string(),
+          date: z.date(),
           location: z.string(),
           url: z.string().optional()
         }))
       })
     }),
     about: defineCollection({
-      type: 'data',
+      type: 'page',
       source: 'about.yml',
-      schema: PageSchema.extend({
-        hero: PageHero,
+      schema: z.object({
+        hero: createPageHeroSchema(),
         content: z.object({}),
-        images: z.array(Image)
+        images: z.array(createImageSchema())
       })
     })
   }
