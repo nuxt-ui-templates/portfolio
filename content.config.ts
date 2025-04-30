@@ -17,7 +17,7 @@ const createButtonSchema = () => z.object({
 
 const createImageSchema = () => z.object({
   src: z.string().editor({ input: 'media' }),
-  alt: z.string(),
+  alt: z.string()
 })
 
 const createAuthorSchema = () => z.object({
@@ -35,7 +35,7 @@ const createTestimonialSchema = () => z.object({
 })
 
 const createPageHeroSchema = () => createBaseSchema().extend({
-  links: z.array(createButtonSchema()).optional(),
+  links: z.array(createButtonSchema()).optional()
 })
 
 export default defineContentConfig({
