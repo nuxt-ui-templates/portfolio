@@ -40,9 +40,10 @@ const ui = {
       :ui
     >
       <template #content="{ item }">
-        <UPageAccordion
+        <UAccordion
           trailing-icon="lucide:plus"
           :items="item.questions"
+          :unmount-on-hide="false"
           :ui="{
             item: 'border-none',
             trigger: 'mb-2 border-0 group px-4 transform-gpu rounded-lg bg-elevated/60 will-change-transform hover:bg-muted/50',
@@ -56,7 +57,7 @@ const ui = {
               class="px-4"
             />
           </template>
-        </UPageAccordion>
+        </UAccordion>
       </template>
     </UTabs>
   </UPageSection>

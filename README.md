@@ -1,12 +1,12 @@
 # Nuxt Portfolio Template
 
-[![Nuxt UI Pro](https://img.shields.io/badge/Made%20with-Nuxt%20UI%20Pro-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com/pro)
+[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
 [![Deploy to NuxtHub](https://img.shields.io/badge/Deploy%20to-NuxtHub-00DC82?logo=nuxt&labelColor=020420)](https://hub.nuxt.com/new?repo=nuxt-ui-pro/portfolio)
 
-Use this template to create your own portfolio with [Nuxt UI Pro](https://ui.nuxt.com/pro).
+Use this template to create your own portfolio with [Nuxt UI](https://ui.nuxt.com).
 
 - [Live demo](https://portfolio-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/getting-started/installation/pro/nuxt)
+- [Documentation](https://ui.nuxt.com/getting-started/installation)
 
 <a href="https://portfolio-template.nuxt.dev/" target="_blank">
   <picture>
