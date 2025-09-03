@@ -6,7 +6,7 @@ description: "I craft intuitive digital experiences where design meets functiona
 hero:
   links:
     - label: "Use this template"
-      to: https://github.com/nuxt-ui-pro/portfolio
+      to: https://github.com/nuxt-ui-templates/portfolio
       color: "neutral"
   images:
     - src: https://picsum.photos/468/468?random=1
