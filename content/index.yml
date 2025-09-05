@@ -21,12 +21,12 @@ hero:
       alt: Random Image 5
     - src: /hero/random-6.jpg
       alt: Random Image 6
-    - src: /hero/random-6.jpg
-      alt: Random Image 6
     - src: /hero/random-7.jpg
       alt: Random Image 7
     - src: /hero/random-8.jpg
       alt: Random Image 8
+    - src: /hero/random-9.jpg
+      alt: Random Image 9
 about:
   title: "About Me"
   description: |
