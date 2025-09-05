@@ -158,7 +158,7 @@ defineProps<{
 
     <UMarquee
       pause-on-hover
-      class="py-2 -mx-4 sm:-mx-6 lg:-mx-8 [--duration:40s]"
+      class="py-2 -mx-8 sm:-mx-12 lg:-mx-16 [--duration:40s]"
     >
       <Motion
         v-for="(img, index) in page.hero.images"
