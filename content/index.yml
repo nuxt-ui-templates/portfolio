@@ -9,23 +9,23 @@ hero:
       to: https://github.com/nuxt-ui-templates/portfolio
       color: "neutral"
   images:
-    - src: https://picsum.photos/468/468?random=1
+    - src: /hero/random-1.jpg
       alt: Random Image 1
-    - src: https://picsum.photos/468/468?random=2
+    - src: /hero/random-2.jpg
       alt: Random Image 2
-    - src: https://picsum.photos/468/468?random=3
+    - src: /hero/random-3.jpg
       alt: Random Image 3
-    - src: https://picsum.photos/468/468?random=4
+    - src: /hero/random-4.jpg
       alt: Random Image 4
-    - src: https://picsum.photos/468/468?random=5
+    - src: /hero/random-5.jpg
       alt: Random Image 5
-    - src: https://picsum.photos/468/468?random=6
+    - src: /hero/random-6.jpg
       alt: Random Image 6
-    - src: https://picsum.photos/468/468?random=6
+    - src: /hero/random-6.jpg
       alt: Random Image 6
-    - src: https://picsum.photos/468/468?random=7
+    - src: /hero/random-7.jpg
       alt: Random Image 7
-    - src: https://picsum.photos/468/468?random=8
+    - src: /hero/random-8.jpg
       alt: Random Image 8
 about:
   title: "About Me"
