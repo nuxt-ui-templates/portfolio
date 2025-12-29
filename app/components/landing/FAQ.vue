@@ -6,11 +6,13 @@ const props = defineProps<{
 }>()
 
 const items = computed(() => {
-  return props.page.faq?.categories.map((faq) => {
+  const categories = props.page.faq?.categories ?? []
+  return categories.map((faq) => {
+    const title = faq?.title ?? ''
     return {
-      label: faq.title,
-      key: faq.title.toLowerCase(),
-      questions: faq.questions
+      label: title,
+      key: title.toLowerCase(),
+      questions: faq?.questions ?? []
     }
   })
 })
@@ -26,8 +28,8 @@ const ui = {
 
 <template>
   <UPageSection
-    :title="page.faq.title"
-    :description="page.faq.description"
+    :title="page.faq?.title"
+      :description="page.faq?.description"
     :ui="{
       container: 'px-0 !pt-0 gap-4 sm:gap-4',
       title: 'text-left text-xl sm:text-xl lg:text-2xl font-medium',
@@ -35,7 +37,7 @@ const ui = {
     }"
   >
     <UTabs
-      :items
+      :items="items"
       orientation="horizontal"
       :ui
     >
