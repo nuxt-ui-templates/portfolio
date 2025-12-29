@@ -4,13 +4,6 @@ import type { IndexCollectionItem } from '@nuxt/content'
 defineProps<{
   page: IndexCollectionItem
 }>()
-
-const { data: posts } = await useAsyncData('index-blogs', () =>
-  queryCollection('blog').order('date', 'DESC').limit(3).all()
-)
-if (!posts.value) {
-  throw createError({ statusCode: 404, statusMessage: 'blogs posts not found', fatal: true })
-}
 </script>
 
 <template>
@@ -23,39 +16,20 @@ if (!posts.value) {
       description: 'text-left mt-2 text-sm sm:text-md lg:text-sm text-muted'
     }"
   >
-    <UBlogPosts
-      orientation="vertical"
-      class="gap-4 lg:gap-y-4"
-    >
-      <UBlogPost
-        v-for="(post, index) in posts"
-        :key="index"
-        orientation="horizontal"
-        variant="naked"
-        v-bind="post"
-        :to="post.path"
-        :ui="{
-          root: 'group relative lg:items-start lg:flex ring-0 hover:ring-0',
-          body: '!px-0',
-          header: 'hidden'
-        }"
-      >
-        <template #footer>
-          <UButton
-            size="xs"
-            variant="link"
-            class="px-0 gap-0"
-            label="Read Article"
-          >
-            <template #trailing>
-              <UIcon
-                name="i-lucide-arrow-right"
-                class="size-4 text-primary transition-all opacity-0 group-hover:translate-x-1 group-hover:opacity-100"
-              />
-            </template>
-          </UButton>
-        </template>
-      </UBlogPost>
-    </UBlogPosts>
+    <div class="flex flex-col items-center justify-center py-16 lg:py-20">
+      <div class="text-center space-y-4">
+        <div class="flex items-center justify-center gap-2">
+          <h3 class="text-3xl lg:text-4xl font-semibold animate-pulse">Coming Soon</h3>
+          <span class="flex gap-1">
+            <span class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 0ms;"></span>
+            <span class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 150ms;"></span>
+            <span class="w-2 h-2 bg-primary rounded-full animate-bounce" style="animation-delay: 300ms;"></span>
+          </span>
+        </div>
+        <p class="text-muted text-sm lg:text-base max-w-lg px-4">
+          Exciting articles are on the way. Stay tuned for insights on development, design, and technology.
+        </p>
+      </div>
+    </div>
   </UPageSection>
 </template>
