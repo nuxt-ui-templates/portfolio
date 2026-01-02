@@ -1,48 +1,27 @@
 title: Talks & Workshops
-description: Explore talks and workshops I've given on UX design, front-end development, and building better digital products.
+description: Explore talks, workshops, and podcast appearances about back-end systems, fullstack development, and building reliable software.
 links:
   - label: Invite me to speak
+    to: "mailto:bielfaria2003@gmail.com"
     size: md
 events:
   - category: Conference
-    title: "Bridging the Gap: Design Systems for Designer-Developer Collaboration"
+    title: "Building Reliable Back-End Systems"
     date: "2024-10-26"
-    location: "VueConf US, Miami, FL"
+    location: "Brazil Web Summit"
     url: "#"
   - category: Conference
-    title: "Intuitive Interfaces: Applying UX Principles in Nuxt.js Applications"
+    title: "Designing Maintainable APIs"
     date: "2024-06-15"
-    location: "Nuxt Nation, Online"
+    location: "Developer Conference Online"
     url: "#"
-  - category: Conference
-    title: "Accessibility First: Building Inclusive Web Apps"
-    date: "2023-11-08"
-    location: "Boston Web Performance Meetup, Boston, MA"
   - category: Live talk
-    title: "Mastering Component Design in Figma & Vue"
+    title: "Observability for Everyday Engineering"
     date: "2024-08-20"
-    location: "Design & Dev Boston Meetup, Boston, MA"
+    location: "Local Meetups & Workshops"
     url: "#"
-  - category: Live talk
-    title: "From Wireframe to Web: A Practical Front-End Workflow"
-    date: "2024-03-05"
-    location: "Internal Workshop @ PreviousCompany Inc."
-  - category: Live talk
-    title: "The Power of User Research in Product Development"
-    date: "2023-09-12"
-    location: "Boston University Guest Lecture, Boston, MA"
   - category: Podcast
-    title: "Designing for Developers: A UX Perspective"
+    title: "Scaling Systems: Practical Tips"
     date: "2024-07-18"
-    location: "Syntax.fm (Guest)"
-    url: "#"
-  - category: Podcast
-    title: "The Future of Front-End Frameworks & Design Tooling"
-    date: "2024-01-30"
-    location: "Design Details Podcast (Guest)"
-    url: "#"
-  - category: Podcast
-    title: "Building a Career in UX/UI & Development"
-    date: "2023-05-22"
-    location: "TechForward Boston Podcast"
+    location: "Tech Podcast (Guest)"
     url: "#"

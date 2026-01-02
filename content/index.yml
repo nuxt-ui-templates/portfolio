@@ -31,8 +31,8 @@ experience:
       date: "Oct 2025 − Present"
       company:
         name: "DW Corp"
-        logo: ""
-        url: ""
+        logo: "/logos/DW-Corp-logo.svg"
+        url: "https://dwcorp.com.br/"
     - position: "Intern at"
       date: "May 2024 − Oct 2025"
       company:
