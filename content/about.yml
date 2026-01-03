@@ -1,27 +1,22 @@
 title: About Me
-description: Learn more about my journey as a Boston-based UX/UI Designer & Front-End Developer, my design philosophy, and my passion for crafting intuitive digital experiences.
+description: Learn more about my journey as a Fullstack Developer, my philosophy of solving problems and adding value, and my drive for building and learning.
 content: |
-  Hi, I'm **Emma Thompson**, a UX/UI Designer and Front-End Developer based right here in Boston. For the past six years, I've been immersed in the world of digital product creation, focusing on building experiences that are not just functional, but genuinely intuitive and engaging for users.
+  Hi, I'm a Fullstack Developer focused on building modern web products—interfaces and systems that solve real problems and deliver measurable value to users and teams.
 
-  My path started at **Boston University**, where I earned a degree in Interactive Design. It was there I discovered my dual passion for the visual language of design and the logical puzzle of code. Since then, I've honed my skills in both areas, believing that the best digital products are born from a deep understanding of both aesthetics and implementation.
+  I enjoy working across the stack, from designing clear, intuitive user experiences to implementing reliable back-end services and integrations. My approach is pragmatic: understand the problem deeply, align on outcomes, and ship maintainable solutions that scale with the product.
 
-  ### My Design Philosophy
-
-  My design philosophy is rooted in **empathy** and **problem-solving**. I believe great design starts with understanding the 'why' – the user's needs, motivations, and pain points. I use research, iterative prototyping (often with tools like Figma), and user testing to ensure the solutions I build are truly effective.
-
-  I strive to create interfaces that feel effortless, where functionality and beauty work hand-in-hand. Whether I'm crafting pixel-perfect UIs or writing clean Vue.js/Nuxt.js code, my focus is always on creating value for the end-user.
+  My philosophy is rooted in problem-solving and value delivery. I start by clarifying the user’s needs and the business context, then iterate quickly with tight feedback loops. I care about clean architecture, performance, and developer experience because great products are not only usable, but also easy to evolve.
 
   ### What Drives Me
 
-  What keeps me excited about this work is the constant learning and the challenge of translating complex ideas into simple, elegant solutions. There's nothing more rewarding than seeing a design come to life and knowing it's making someone's digital interaction easier or more enjoyable.
+  I'm motivated by the act of creation and a constant pursuit of learning. I like taking ideas from “concept” to “working product,” validating assumptions early, and improving through real usage and feedback. I’m especially energized by projects where I can combine engineering discipline with product thinking to make the experience simpler, faster, and more reliable.
+
+  ### How I Work
+
+  I value clarity and collaboration. I communicate progress, document decisions when they matter, and build in a way that makes the next change easier not harder. Whether I’m working independently or with a team, I aim to be someone who reduces ambiguity, takes ownership, and delivers consistently.
 
   ### Beyond the Screen
 
-  When I'm not designing or coding, you might find me exploring Boston's latest coffee shops, hiking nearby trails, or occasionally contributing to open-source projects.
+  When I'm not building products, I explore new technologies, experiment with side projects, and study design and engineering principles to sharpen my craft. I enjoy learning from real world systems what worked, what didn’t, and why.
 
   Thanks for stopping by. Feel free to browse my [projects](/projects) or [get in touch](/#contact) if you'd like to collaborate!
-images:
-  - src: https://images.unsplash.com/photo-1744877478622-a78c7a3336f6?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My coffee workspace
-  - src: https://images.unsplash.com/photo-1744429523595-2c06b8611242?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-    alt: My trip to Tokyo
