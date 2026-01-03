@@ -1,0 +1,6 @@
+title: RAG System for Brazilian Criminal Law Research
+description: "Designed and delivered an end-to-end RAG system for Brazilian criminal law research, enabling efficient retrieval and synthesis of legal precedents from multiple courts (STF, STJ, TRF4). Built a full-stack solution combining automated web scraping, semantic search with FAISS and OpenSearch, and a responsive chat interface using Nuxt 4 and Vue 3. The platform supports RAG-enhanced and direct LLM queries via a production-ready FastAPI service, focusing on scalability, performance, and legal research accuracy."
+image: https://i.imgur.com/vePCk0Y.png
+url: "https://github.com/LabTechUDF/RAG-TCC"
+tags: ["RAG", "LegalTech", "FAISS", "OpenSearch", "FastAPI", "Nuxt 4", "Vue 3", "Web Scraping", "STF", "STJ", "TRF4"]
+date: "2025-02-01"
