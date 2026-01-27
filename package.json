@@ -20,7 +20,7 @@
     "@vueuse/nuxt": "^14.1.0",
     "better-sqlite3": "^12.6.2",
     "motion-v": "^1.10.2",
-    "nuxt": "^4.2.2",
+    "nuxt": "^4.3.0",
     "nuxt-og-image": "^5.1.13",
     "tailwindcss": "^4.1.18"
   },
