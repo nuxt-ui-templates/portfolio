@@ -18,7 +18,7 @@ Use this template to create your own portfolio with [Nuxt UI](https://ui.nuxt.co
 ## Quick Start
 
 ```bash [Terminal]
-npm create nuxt@latest -- -t github:nuxt-ui-templates/portfolio
+npm create nuxt@latest -- -t ui/portfolio
 ```
 
 ## Deploy your own
