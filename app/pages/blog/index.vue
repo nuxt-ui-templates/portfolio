@@ -68,7 +68,18 @@ useSeoMeta({
                   ? 'sm:-rotate-1 overflow-visible'
                   : 'sm:rotate-1 overflow-visible'
             }"
-          />
+          >
+            <template #date="{ date }">
+              <div class="flex items-center gap-2 text-sm text-muted">
+                <time :datetime="date">{{ new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) }}</time>
+                <span v-if="post.minRead" class="flex items-center gap-1">
+                  <span class="text-muted/50">·</span>
+                  <UIcon name="i-lucide-clock" class="size-3.5" />
+                  <span>{{ post.minRead }} min read</span>
+                </span>
+              </div>
+            </template>
+          </UBlogPost>
         </Motion>
       </UBlogPosts>
     </UPageSection>
