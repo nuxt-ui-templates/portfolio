@@ -18,7 +18,7 @@ if (!posts.value) {
     :title="page.blog.title"
     :description="page.blog.description"
     :ui="{
-      container: 'px-0 !pt-0 sm:gap-6 lg:gap-8',
+      container: 'px-0 pt-0! sm:gap-6 lg:gap-8',
       title: 'text-left text-xl sm:text-xl lg:text-2xl font-medium',
       description: 'text-left mt-2 text-sm sm:text-md lg:text-sm text-muted'
     }"
@@ -36,7 +36,7 @@ if (!posts.value) {
         :to="post.path"
         :ui="{
           root: 'group relative lg:items-start lg:flex ring-0 hover:ring-0',
-          body: '!px-0',
+          body: 'px-0!',
           header: 'hidden'
         }"
       >
