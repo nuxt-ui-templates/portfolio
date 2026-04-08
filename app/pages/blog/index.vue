@@ -58,12 +58,7 @@ useSeoMeta({
             variant="naked"
             orientation="horizontal"
             :to="post.path"
-            :title="post.title"
-            :description="post.description"
-            :image="post.image"
-            :date="post.date"
-            :author="post.author"
-            :badge="{ label: `${post.minRead} min read`, color: 'neutral' }"
+            v-bind="post"
             :ui="{
               root: 'md:grid md:grid-cols-2 group overflow-visible transition-all duration-300',
               image:
