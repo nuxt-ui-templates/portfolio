@@ -27,6 +27,12 @@ export default defineNuxtConfig({
     }
   },
 
+  content: {
+    experimental: {
+      sqliteConnector: 'native'
+    }
+  },
+
   eslint: {
     config: {
       stylistic: {
