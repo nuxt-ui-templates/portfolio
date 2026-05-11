@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import type { ContentNavigationItem } from '@nuxt/content'
-import { mapContentNavigation } from '@nuxt/ui/utils/content'
-import { findPageBreadcrumb } from '@nuxt/content/utils'
-
 const route = useRoute()
 
 const { data: page } = await useAsyncData(route.path, () =>
@@ -15,21 +11,6 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () =>
   })
 )
 
-const navigation = inject<Ref<ContentNavigationItem[]>>('navigation', ref([]))
-const blogNavigation = computed(() => navigation.value.find(item => item.path === '/blog')?.children || [])
-
-const breadcrumb = computed(() => mapContentNavigation(findPageBreadcrumb(blogNavigation?.value, page.value?.path)).map(({ icon, ...link }) => link))
-
-if (page.value.image) {
-  defineOgImage({ url: page.value.image })
-} else {
-  defineOgImageComponent('Blog', {
-    headline: breadcrumb.value.map(item => item.label).join(' > ')
-  }, {
-    fonts: ['Geist:400', 'Geist:600']
-  })
-}
-
 const title = page.value?.seo?.title || page.value?.title
 const description = page.value?.seo?.description || page.value?.description
 
@@ -39,6 +20,16 @@ useSeoMeta({
   ogDescription: description,
   ogTitle: title
 })
+
+if (page.value.image) {
+  useSeoMeta({ ogImage: page.value.image })
+} else {
+  defineOgImage('Portfolio', {
+    title,
+    description,
+    headline: 'Blog'
+  })
+}
 
 const articleLink = computed(() => `${window?.location}`)
 
@@ -75,6 +66,7 @@ const formatDate = (dateString: string) => {
             </span>
           </div>
           <NuxtImg
+            v-if="page.image"
             :src="page.image"
             :alt="page.title"
             class="rounded-lg w-full h-[300px] object-cover object-center"
