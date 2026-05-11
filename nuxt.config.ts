@@ -34,5 +34,9 @@ export default defineNuxtConfig({
         braceStyle: '1tbs'
       }
     }
+  },
+
+  ogImage: {
+    zeroRuntime: true
   }
 })
