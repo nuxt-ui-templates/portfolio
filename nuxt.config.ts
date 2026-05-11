@@ -16,6 +16,12 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  content: {
+    experimental: {
+      sqliteConnector: 'native'
+    }
+  },
+
   compatibilityDate: '2024-11-01',
 
   nitro: {
@@ -24,12 +30,6 @@ export default defineNuxtConfig({
         '/'
       ],
       crawlLinks: true
-    }
-  },
-
-  content: {
-    experimental: {
-      sqliteConnector: 'native'
     }
   },
 
