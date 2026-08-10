@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
 
-defineProps({
-  error: {
-    type: Object as PropType<NuxtError>,
-    required: true
-  }
-})
+defineProps<{
+  error: NuxtError
+}>()
 
 useHead({
   htmlAttrs: {
@@ -39,7 +36,7 @@ const [{ data: navigation }, { data: files }] = await Promise.all([
 </script>
 
 <template>
-  <div>
+  <UApp>
     <AppHeader :links="navLinks" />
 
     <UMain>
@@ -55,13 +52,10 @@ const [{ data: navigation }, { data: files }] = await Promise.all([
     <ClientOnly>
       <LazyUContentSearch
         :files="files"
-        shortcut="meta_k"
         :navigation="navigation"
         :links="navLinks"
         :fuse="{ resultLimit: 42 }"
       />
     </ClientOnly>
-
-    <UToaster />
-  </div>
+  </UApp>
 </template>

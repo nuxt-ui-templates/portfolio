@@ -53,7 +53,6 @@ const [{ data: navigation }, { data: files }] = await Promise.all([
       <LazyUContentSearch
         :files="files"
         :navigation="navigation"
-        shortcut="meta_k"
         :links="navLinks"
         :fuse="{ resultLimit: 42 }"
       />
