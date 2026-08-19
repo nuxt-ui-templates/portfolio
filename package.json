@@ -22,7 +22,8 @@
     "motion-v": "^2.4.0",
     "nuxt": "^4.5.2",
     "nuxt-og-image": "^6.7.8",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.3",
+    "ufo": "^1.6.4"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.17.0",
