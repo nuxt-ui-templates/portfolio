@@ -2,7 +2,7 @@
 import { withoutTrailingSlash } from 'ufo'
 
 const route = useRoute()
-const routePath = computed(() => withoutTrailingSlash(route.path) || '/')
+const routePath = computed(() => withoutTrailingSlash(route.path))
 
 const { data: page } = await useAsyncData(routePath.value, () =>
   queryCollection('blog').path(routePath.value).first()
