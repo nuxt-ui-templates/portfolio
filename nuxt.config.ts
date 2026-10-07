@@ -24,15 +24,6 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2026-06-30',
 
-  nitro: {
-    prerender: {
-      routes: [
-        '/'
-      ],
-      crawlLinks: true
-    }
-  },
-
   eslint: {
     config: {
       stylistic: {
@@ -44,5 +35,12 @@ export default defineNuxtConfig({
 
   ogImage: {
     zeroRuntime: true
+  },
+
+  prerender: {
+    routes: [
+      '/'
+    ],
+    crawlLinks: true
   }
 })
