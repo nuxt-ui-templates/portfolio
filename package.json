@@ -20,7 +20,7 @@
     "@takumi-rs/core": "^2.19.0",
     "@vueuse/nuxt": "^14.4.0",
     "motion-v": "^2.10.0",
-    "nuxt": "^4.6.3",
+    "nuxt": "^4.6.4",
     "nuxt-og-image": "^7.0.7",
     "tailwindcss": "^4.3.3",
     "ufo": "^1.6.4"
