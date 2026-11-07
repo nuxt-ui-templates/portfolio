@@ -123,7 +123,8 @@ export default defineContentConfig({
       type: 'page',
       source: 'about.yml',
       schema: z.object({
-        content: z.object({}),
+        // A markdown string rendered with <MDC>. v4 types the field from this schema.
+        content: z.string(),
         images: z.array(createImageSchema())
       })
     })

@@ -23,20 +23,14 @@ useSeoMeta({
 })
 
 const [{ data: navigation }, { data: files }] = await Promise.all([
-  useAsyncData('navigation', () => {
-    return Promise.all([
-      queryCollectionNavigation('blog')
-    ])
-  }, {
-    transform: data => data.flat()
+  // v4 builds one navigation tree across every source; search covers the blog only.
+  useAsyncData('navigation', async () => {
+    const navigation = await content.navigation()
+    return navigation.filter(item => item.path === '/blog')
   }),
-  useLazyAsyncData('search', () => {
-    return Promise.all([
-      queryCollectionSearchSections('blog')
-    ])
-  }, {
-    server: false,
-    transform: data => data.flat()
+  // v4 has no native search-sections API, so this stays on the v3 compatibility layer.
+  useLazyAsyncData('search', () => queryCollectionSearchSections('blog'), {
+    server: false
   })
 ])
 </script>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+
 type Event = {
   title: string
   date: string
@@ -8,7 +10,7 @@ type Event = {
 }
 
 const { data: page } = await useAsyncData('speaking', () => {
-  return queryCollection('speaking').first()
+  return content.get('/speaking')
 })
 if (!page.value) {
   throw createError({
@@ -18,8 +20,8 @@ if (!page.value) {
   })
 }
 
-const title = page.value?.seo?.title || page.value?.title
-const description = page.value?.seo?.description || page.value?.description
+const title = page.value.data.seo?.title || page.value.data.title
+const description = page.value.data.seo?.description || page.value.data.description
 
 useSeoMeta({
   title,
@@ -28,12 +30,17 @@ useSeoMeta({
   ogDescription: description
 })
 
+// v4 types `content.config.ts` enums as plain strings, so the button `color`/`size`/`variant`
+// enums need narrowing back to Nuxt UI's types.
+const links = page.value.data.links as ButtonProps[]
+
 defineOgImage('Portfolio', { title, description })
 
 const { global } = useAppConfig()
 
 const groupedEvents = computed((): Record<Event['category'], Event[]> => {
-  const events = page.value?.events || []
+  // v4 types the `category` enum as a plain string.
+  const events = (page.value?.data.events || []) as Event[]
   const grouped: Record<Event['category'], Event[]> = {
     'Conference': [],
     'Live talk': [],
@@ -53,8 +60,8 @@ function formatDate(dateString: string): string {
 <template>
   <UPage v-if="page">
     <UPageHero
-      :title="page.title"
-      :description="page.description"
+      :title="page.data.title"
+      :description="page.data.description"
       :ui="{
         title: 'mx-0! text-left',
         description: 'mx-0! text-left',
@@ -63,9 +70,9 @@ function formatDate(dateString: string): string {
     >
       <template #links>
         <UButton
-          v-if="page.links"
+          v-if="links"
           :to="`mailto:${global.email}`"
-          v-bind="page.links[0]"
+          v-bind="links[0]"
         />
       </template>
     </UPageHero>

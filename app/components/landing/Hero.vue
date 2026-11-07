@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content'
+import type { ButtonProps } from '@nuxt/ui'
+import type { IndexPage } from '~/types/content'
 
 const { footer, global } = useAppConfig()
 
 defineProps<{
-  page: IndexCollectionItem
+  page: IndexPage
 }>()
 </script>
 
@@ -105,7 +106,8 @@ defineProps<{
           v-if="page.hero.links"
           class="flex items-center gap-2"
         >
-          <UButton v-bind="page.hero.links[0]" />
+          <!-- v4 types `content.config.ts` enums as plain strings. -->
+          <UButton v-bind="page.hero.links[0] as ButtonProps" />
           <UButton
             :color="global.available ? 'success' : 'error'"
             variant="ghost"
