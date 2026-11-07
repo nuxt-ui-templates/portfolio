@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+
 const { data: page } = await useAsyncData('projects-page', () => {
-  return queryCollection('pages').path('/projects').first()
+  return content.get('/projects')
 })
 if (!page.value) {
   throw createError({
@@ -10,14 +12,16 @@ if (!page.value) {
   })
 }
 
-const { data: projects } = await useAsyncData('projects', () => {
-  return queryCollection('projects').all()
+// Sorted by path, the order v3 returned them in.
+const { data: projects } = await useAsyncData('projects', async () => {
+  const projects = await content.list(['projects'])
+  return projects.sort((a, b) => a.path.localeCompare(b.path)).map(project => project.data)
 })
 
 const { global } = useAppConfig()
 
-const title = page.value?.seo?.title || page.value?.title
-const description = page.value?.seo?.description || page.value?.description
+const title = page.value.data.seo?.title || page.value.data.title
+const description = page.value.data.seo?.description || page.value.data.description
 
 useSeoMeta({
   title,
@@ -26,15 +30,19 @@ useSeoMeta({
   ogDescription: description
 })
 
+// v4 types `content.config.ts` enums as plain strings, so the button `color`/`size`/`variant`
+// enums need narrowing back to Nuxt UI's types.
+const links = page.value.data.links as ButtonProps[]
+
 defineOgImage('Portfolio', { title, description })
 </script>
 
 <template>
   <UPage v-if="page">
     <UPageHero
-      :title="page.title"
-      :description="page.description"
-      :links="page.links"
+      :title="page.data.title"
+      :description="page.data.description"
+      :links
       :ui="{
         title: 'mx-0! text-left',
         description: 'mx-0! text-left',
@@ -43,17 +51,17 @@ defineOgImage('Portfolio', { title, description })
     >
       <template #links>
         <div
-          v-if="page.links"
+          v-if="links"
           class="flex items-center gap-2"
         >
           <UButton
-            :label="page.links[0]?.label"
+            :label="links[0]?.label"
             :to="global.meetingLink"
-            v-bind="page.links[0]"
+            v-bind="links[0]"
           />
           <UButton
             :to="`mailto:${global.email}`"
-            v-bind="page.links[1]"
+            v-bind="links[1]"
           />
         </div>
       </template>
@@ -85,7 +93,7 @@ defineOgImage('Portfolio', { title, description })
         >
           <template #leading>
             <span class="text-sm text-muted">
-              {{ new Date(project.date).getFullYear() }}
+              {{ new Date(String(project.date)).getFullYear() }}
             </span>
           </template>
           <template #footer>

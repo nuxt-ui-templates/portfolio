@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { data: page } = await useAsyncData('about', () => {
-  return queryCollection('about').first()
+  return content.get('/about')
 })
 if (!page.value) {
   throw createError({
@@ -12,8 +12,8 @@ if (!page.value) {
 
 const { global } = useAppConfig()
 
-const title = page.value?.seo?.title || page.value?.title
-const description = page.value?.seo?.description || page.value?.description
+const title = page.value.data.seo?.title || page.value.data.title
+const description = page.value.data.seo?.description || page.value.data.description
 
 useSeoMeta({
   title,
@@ -28,8 +28,8 @@ defineOgImage('Portfolio', { title, description })
 <template>
   <UPage v-if="page">
     <UPageHero
-      :title="page.title"
-      :description="page.description"
+      :title="page.data.title"
+      :description="page.data.description"
       orientation="horizontal"
       :ui="{
         container: 'lg:flex sm:flex-row items-center',
@@ -51,12 +51,12 @@ defineOgImage('Portfolio', { title, description })
       }"
     >
       <MDC
-        :value="page.content"
+        :value="page.data.content"
         unwrap="p"
       />
       <div class="flex flex-row justify-center items-center py-10 -space-x-8">
         <PolaroidItem
-          v-for="(image, index) in page.images"
+          v-for="(image, index) in page.data.images"
           :key="index"
           :image="image"
           :index

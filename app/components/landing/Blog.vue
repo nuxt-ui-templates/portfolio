@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content'
+import type { IndexPage } from '~/types/content'
 
 defineProps<{
-  page: IndexCollectionItem
+  page: IndexPage
 }>()
 
-const { data: posts } = await useAsyncData('index-blogs', () =>
-  queryCollection('blog').order('date', 'DESC').limit(3).all()
-)
+const { data: posts } = await useAsyncData('index-blogs', async () => (await listBlogPosts()).slice(0, 3))
 if (!posts.value) {
   throw createError({ statusCode: 404, statusMessage: 'blogs posts not found', fatal: true })
 }
@@ -32,7 +30,7 @@ if (!posts.value) {
         :key="index"
         orientation="horizontal"
         variant="naked"
-        v-bind="post"
+        v-bind="post.data"
         :to="post.path"
         :ui="{
           root: 'group relative lg:items-start lg:flex ring-0 hover:ring-0',

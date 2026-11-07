@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+
 const { data: page } = await useAsyncData('blog-page', () => {
-  return queryCollection('pages').path('/blog').first()
+  return content.get('/blog')
 })
 if (!page.value) {
   throw createError({
@@ -9,9 +11,7 @@ if (!page.value) {
     fatal: true
   })
 }
-const { data: posts } = await useAsyncData('blogs', () =>
-  queryCollection('blog').order('date', 'DESC').all()
-)
+const { data: posts } = await useAsyncData('blogs', () => listBlogPosts())
 if (!posts.value) {
   throw createError({
     statusCode: 404,
@@ -20,8 +20,8 @@ if (!posts.value) {
   })
 }
 
-const title = page.value?.seo?.title || page.value?.title
-const description = page.value?.seo?.description || page.value?.description
+const title = page.value.data.seo?.title || page.value.data.title
+const description = page.value.data.seo?.description || page.value.data.description
 
 useSeoMeta({
   title,
@@ -30,15 +30,19 @@ useSeoMeta({
   ogDescription: description
 })
 
+// v4 types `content.config.ts` enums as plain strings, so the button `color`/`size`/`variant`
+// enums need narrowing back to Nuxt UI's types.
+const links = page.value.data.links as ButtonProps[]
+
 defineOgImage('Portfolio', { title, description })
 </script>
 
 <template>
   <UPage v-if="page">
     <UPageHero
-      :title="page.title"
-      :description="page.description"
-      :links="page.links"
+      :title="page.data.title"
+      :description="page.data.description"
+      :links
       :ui="{
         title: 'mx-0! text-left',
         description: 'mx-0! text-left',
@@ -63,7 +67,7 @@ defineOgImage('Portfolio', { title, description })
             variant="naked"
             orientation="horizontal"
             :to="post.path"
-            v-bind="post"
+            v-bind="post.data"
             :ui="{
               root: 'md:grid md:grid-cols-2 group overflow-visible transition-all duration-300',
               image:
